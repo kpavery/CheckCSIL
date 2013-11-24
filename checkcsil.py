@@ -15,29 +15,24 @@ client.load_system_host_keys()
 client.set_missing_host_key_policy(paramiko.RejectPolicy())
 
 try:
-	success = False
 	for workstation in workstations:
 		try:
 			hostname = workstation + ".cs.ucsb.edu"
-			#print "Trying " + hostname
 			sys.stdout.write(".")
-			client.connect(hostname=hostname,timeout=2)
 			
+			client.connect(hostname=hostname,timeout=2)
 			stdin, stdout, stderr = client.exec_command("who")
 			lines = stdout.readlines()
-			
 			client.close()
 			
 			if len(lines) <= 1:
 				print
-				print hostname
-				success = True
+				sys.stdout.write(hostname)
 				break
 			
 		except socket.timeout:
 			sys.stdout.write("T")
-			
-	if not success:
-		print
+	
+	print
 except Exception, e:
 	print "Exception: " + str(e)
