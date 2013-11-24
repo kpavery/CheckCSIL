@@ -15,4 +15,5 @@ A tiny Python script to check the UCSB CSIL for available workstations.
 
 ### Instructions
 
-- To run: `python checkcsil.py`
+- If your CSIL username is the same as your local username: `python checkcsil.py`
+- If your CSIL username is different: `python checkcsil.py CSILUSERNAME`
