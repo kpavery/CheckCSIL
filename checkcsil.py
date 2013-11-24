@@ -1,3 +1,8 @@
+## Check CSIL
+##
+## By Keith Avery
+## Copyright 2013, All Rights reserved
+
 import paramiko
 import socket
 import sys
