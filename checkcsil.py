@@ -6,9 +6,11 @@
 from paramiko import SSHClient, RejectPolicy
 from socket import timeout
 from sys import stdout, argv
+from random import shuffle
 
 workstations = ["snarf", "homer", "dilbert", "thundarr", "dudley", "cartman", "linus", "megatron", "marge", "whiley", "lupin", "elroy", "garfield", "bart", "butthead", "kyle", "scooby", "dagwood", "yogi", "mickey", "boris", "beavis", "popeye", "calvin", "aeonflux", "tygra", "taz", "pinky", "kenny", "snoopy", "dot", "speed", "akira", "tick", "optimus", "blondie", "tom", "booboo", "bugs", "eeyore", "bullwinkle", "brain", "sylvester", "racerx", "lisa", "hobbes", "wacko", "shaggy"]
-workstations.sort()
+#workstations.sort()
+shuffle(workstations)
 
 client = SSHClient()
 client.load_system_host_keys()
