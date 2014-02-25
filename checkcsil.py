@@ -1,7 +1,7 @@
 ## Check CSIL
 ##
 ## By Keith Avery
-## Copyright 2013, All Rights reserved
+## Copyright 2013-2014, All Rights reserved
 
 from paramiko import SSHClient, RejectPolicy
 from socket import timeout
