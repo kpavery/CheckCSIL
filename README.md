@@ -21,25 +21,21 @@ The script has two options:
 - Ability to specify the username to use to login
 
 To run with verbose output:
-
 ```
 python checkcsil.py -v
 ```
 
 To run with a specific username:
-
 ```
 python checkcsil.py USERNAME
 ```
 
 To run with both options:
-
 ```
 python checkcsil.py -v USERNAME
 ```
 
 To show a help menu:
-
 ```
 python checkcsil.py -h
 ```
