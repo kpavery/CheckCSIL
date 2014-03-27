@@ -39,3 +39,6 @@ To show a help menu:
 ```
 python checkcsil.py -h
 ```
+### Credits
+
+Written entirely by [Keith Avery](https://kpavery.github.io).
