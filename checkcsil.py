@@ -41,6 +41,7 @@ try:
 			hostname = workstation + ".cs.ucsb.edu"
 			if (not verbose):
 				stdout.write(".")
+				stdout.flush()
 			
 			client = SSHClient()
 			client.load_system_host_keys()
@@ -63,6 +64,7 @@ try:
 		except timeout:
 			if (not verbose):
 				stdout.write("T")
+				stdout.flush()
 			else:
 				print hostname + padding(workstation) + " - timed out"
 	
