@@ -46,7 +46,7 @@ try:
 			client = SSHClient()
 			client.load_system_host_keys()
 			client.set_missing_host_key_policy(RejectPolicy())
-			client.connect(hostname=hostname,username=username, timeout=2)
+			client.connect(hostname=hostname,username=username, timeout=2, look_for_keys=False)
 			sshin, sshout, ssherr = client.exec_command("who")
 			lines = sshout.readlines()
 			client.close()
