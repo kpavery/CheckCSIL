@@ -10,7 +10,7 @@ A tiny Python script to check the UCSB CSIL for available workstations.
 
 ### Requirements
 
-- [Python 3](http://www.python.org)
+- [Python 2 or 3](http://www.python.org)
 - [Paramiko](https://github.com/paramiko/paramiko)
 
 ### Instructions
