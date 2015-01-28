@@ -3,7 +3,7 @@
 ## By Keith Avery
 ## Copyright 2013-2014, All Rights reserved
 
-from paramiko import SSHClient, RejectPolicy
+from paramiko import SSHClient, RejectPolicy, BadHostKeyException, BadAuthenticationType, AuthenticationException, PasswordRequiredException, SSHException
 from socket import timeout
 from sys import stdout, argv, exit
 from random import shuffle
@@ -24,13 +24,13 @@ if len(argv) > 1:
 		if (len(argv) > 2):
 			username = argv[2]
 	elif (argv[1] == "-h" or argv[1] == "-H" or argv[1] == "help"):
-		print "CheckCSIL Script"
-		print "Run with -v flag to get verbose output:"
-		print "  python checkcsil.py -v"
-		print "To specify a username, pass the username as the last argument:"
-		print "  python checkcsil.py username"
-		print "Options can be combined:"
-		print "  python checkcsil.py -v username"
+		print("CheckCSIL Script")
+		print("Run with -v flag to get verbose output:")
+		print("  python checkcsil.py -v")
+		print("To specify a username, pass the username as the last argument:")
+		print("  python checkcsil.py username")
+		print("Options can be combined:")
+		print("  python checkcsil.py -v username")
 		exit()
 	else:
 		username = argv[1]
@@ -53,23 +53,29 @@ try:
 			
 			if len(lines) <= 0:
 				if (not verbose):
-					print
-					print hostname
+					print("")
+					print(hostname)
 				else:
-					print hostname + padding(workstation) + " - no users logged in"
+					print(hostname + padding(workstation) + " - no users logged in")
 				break
 			elif (verbose):
-				print hostname + padding(workstation) + " - " + str(len(lines)) + " user" + ("s" if len(lines) != 1 else "")
+				print(hostname + padding(workstation) + " - " + str(len(lines)) + " user" + ("s" if len(lines) != 1 else ""))
 			
 		except timeout:
 			if (not verbose):
 				stdout.write("T")
 				stdout.flush()
 			else:
-				print hostname + padding(workstation) + " - timed out"
+				print(hostname + padding(workstation) + " - timed out")
+		except (BadHostKeyException, BadAuthenticationType, AuthenticationException, PasswordRequiredException, SSHException):
+			if (not verbose):
+				stdout.write("F")
+				stdout.flush()
+			else:
+				print(hostname + padding(workstation) + " - authentication issue")
 	
 except KeyboardInterrupt:
-	print
+	print("")
 
-except Exception, e:
-	print "Exception: " + str(e)
+except Exception as e:
+	print("Exception: " + repr(e))
