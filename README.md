@@ -39,6 +39,9 @@ To show a help menu:
 ```
 python checkcsil.py -h
 ```
+
+To use with Python3, replace `python` with `python3` in above examples.
+
 ### Credits
 
 Written entirely by [Keith Avery](https://kpavery.github.io).
